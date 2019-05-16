@@ -1,0 +1,33 @@
+apply plugin: 'com.android.dynamic-feature'
+
+android {
+    compileSdkVersion 28
+
+
+    defaultConfig {
+        minSdkVersion 24
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
+    }
+
+
+}
+sourceSets {
+    test {
+        java {
+            srcDir "/Users/cmovva/android-architecture-components/dynamicfeature/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/"
+        }
+        runtimeClasspath = project.sourceSets.test.runtimeClasspath + files("/Users/cmovva/android-architecture-components/dynamicfeature/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/") + files("${rootDir}/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/")
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':app')
+    testImplementation project(':app')
+    testImplementation 'junit:junit:4.12'
+}
